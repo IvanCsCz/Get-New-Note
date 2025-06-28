@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getRandomNote } from './utils/notes';
 
 function App() {
@@ -10,6 +10,10 @@ function App() {
     setDescription(description);
     setNote(note);
   };
+
+  useEffect(() => {
+    handleGetNote();
+  }, []);
 
   return (
     <>
