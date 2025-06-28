@@ -10,25 +10,11 @@ export function getNotes(initialNote: string, sum1: number, sum2: number) {
   let index = NOTES.indexOf(initialNote);
   let output = NOTES[index] + '-';
 
-  index = updateIndex(index, sum1);
+  index = (index + sum1) % NOTES.length;
   output += NOTES[index] + '-';
 
-  if (index + sum1 === 11) {
-    index = 0;
-  }
-
-  index = updateIndex(index, sum2);
+  index = (index + sum2) % NOTES.length;
   output += NOTES[index];
 
   return output;
-}
-
-function updateIndex(index: number, increment: number) {
-  if (index + increment > 11) {
-    index = index + increment - 12;
-  } else {
-    index += increment;
-  }
-
-  return index;
 }
